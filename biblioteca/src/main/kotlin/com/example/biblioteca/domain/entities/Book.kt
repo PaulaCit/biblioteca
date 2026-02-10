@@ -6,7 +6,7 @@ import com.example.biblioteca.domain.vo.Isbn
 import com.example.biblioteca.domain.vo.Title
 import java.util.UUID
 
-data class Book(val id: UUID = UUID.randomUUID(), val title: Title, val author: Author, val isbn: Isbn, private var isAvailable: Boolean){
+data class Book(val id: UUID = UUID.randomUUID(), val title: Title, val author: Author, val isbn: Isbn, private var isAvailable: Boolean = false){
 
     // Comportamentos --------
 

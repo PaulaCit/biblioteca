@@ -1,6 +1,5 @@
 package com.example.biblioteca.domain.vo
 
-import com.example.biblioteca.domain.exceptions.DomainException
 import com.example.biblioteca.domain.exceptions.ShortTitleException
 import com.example.biblioteca.domain.exceptions.TitleRequiredException
 
