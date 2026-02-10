@@ -23,7 +23,7 @@ class RegisterBookService(private val repository: BookRepositoryPort) : Register
         // 2. Montagem da Entidade (Conversão String -> VO)
         // Aqui fica explícito que estamos transformando dados "crus" em "ricos"
         val newBook = Book(
-            title = Title(command.titulo),
+            title = Title(command.title),
             isbn = Isbn(command.isbn),
             author = Author(command.author),
         )
