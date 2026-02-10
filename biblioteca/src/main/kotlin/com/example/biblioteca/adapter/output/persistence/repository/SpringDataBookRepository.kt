@@ -9,4 +9,5 @@ import java.util.UUID
 * */
 interface SpringDataBookRepository: JpaRepository<BookEntity, UUID> {
     fun existsByIsbn(isbn: String): Boolean
+
 }

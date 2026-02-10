@@ -10,4 +10,6 @@ import com.example.biblioteca.domain.entities.Book
 interface BookRepositoryPort {
     fun save(book: Book): Book
     fun existsByIsbn(isbn: String): Boolean
+
+    fun getAll(): List<Book>
 }

@@ -1,6 +1,7 @@
 package com.example.biblioteca.adapter.output.persistence
 
 import com.example.biblioteca.adapter.output.persistence.entity.BookEntity
+import com.example.biblioteca.adapter.output.persistence.mapper.BookMapper
 import com.example.biblioteca.adapter.output.persistence.repository.SpringDataBookRepository
 import com.example.biblioteca.application.port.out.BookRepositoryPort
 import com.example.biblioteca.domain.entities.Book
@@ -38,5 +39,12 @@ class BookPersistenceAdapter(private val springRepository: SpringDataBookReposit
 
     override fun existsByIsbn(isbn: String): Boolean {
         return springRepository.existsByIsbn(isbn)
+    }
+
+    override fun getAll(): List<Book> {
+        val entities = springRepository.findAll()
+        return entities.map { entity ->
+            BookMapper.toDomain(entity)
+        }
     }
 }
