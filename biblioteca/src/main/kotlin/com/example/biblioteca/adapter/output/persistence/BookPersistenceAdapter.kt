@@ -36,7 +36,7 @@ class BookPersistenceAdapter(private val springRepository: SpringDataBookReposit
             )
     }
 
-    override fun existByIsbn(isbn: String): Boolean {
-        return springRepository.existByIsbn(isbn)
+    override fun existsByIsbn(isbn: String): Boolean {
+        return springRepository.existsByIsbn(isbn)
     }
 }

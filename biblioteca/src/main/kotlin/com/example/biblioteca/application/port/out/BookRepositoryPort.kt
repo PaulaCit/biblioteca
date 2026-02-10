@@ -9,5 +9,5 @@ import com.example.biblioteca.domain.entities.Book
 * */
 interface BookRepositoryPort {
     fun save(book: Book): Book
-    fun existByIsbn(isbn: String): Boolean
+    fun existsByIsbn(isbn: String): Boolean
 }

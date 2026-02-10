@@ -16,7 +16,7 @@ class RegisterBookService(private val repository: BookRepositoryPort) : Register
     override fun execute(command: RegisterBookCommand): String {
 
         // 1. Regra da Aplicação (Fluxo)
-        if(repository.existByIsbn(command.isbn)){
+        if(repository.existsByIsbn(command.isbn)){
             throw IsbnAlreadyExistsException(command.isbn)
         }
 

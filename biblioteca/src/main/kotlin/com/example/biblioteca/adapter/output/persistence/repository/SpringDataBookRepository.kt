@@ -8,5 +8,5 @@ import java.util.UUID
 * Aqui usamos a "mágica" do Spring para gera o SQL.
 * */
 interface SpringDataBookRepository: JpaRepository<BookEntity, UUID> {
-    fun existByIsbn(isbn: String): Boolean
+    fun existsByIsbn(isbn: String): Boolean
 }
