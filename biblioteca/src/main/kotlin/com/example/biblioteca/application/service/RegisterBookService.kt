@@ -9,14 +9,18 @@ import com.example.biblioteca.domain.vo.Author
 import com.example.biblioteca.domain.vo.Isbn
 import com.example.biblioteca.domain.vo.Title
 import org.springframework.stereotype.Service
+import kotlin.math.log
 
 @Service // Indica ao Spring que esta classe contém a lógica de negócio (Application Service)
 class RegisterBookService(private val repository: BookRepositoryPort) : RegisterBookUseCase {
+    private val logger = org.slf4j.LoggerFactory.getLogger(javaClass)
 
     override fun execute(command: RegisterBookCommand): String {
+        logger.info("Iniciando cadastro de livro")
 
         // 1. Regra da Aplicação (Fluxo)
         if(repository.existsByIsbn(command.isbn)){
+            logger.warn("Falha ao cadastrar livro. Livro já existe.")
             throw IsbnAlreadyExistsException(command.isbn)
         }
 
@@ -30,6 +34,8 @@ class RegisterBookService(private val repository: BookRepositoryPort) : Register
 
         //3. Persistência
         repository.save(newBook)
+
+        logger.info("Livro cadastrado com sucesso!")
 
         return newBook.id.toString()
     }
