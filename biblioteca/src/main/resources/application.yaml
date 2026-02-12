@@ -9,3 +9,11 @@ spring:
     hibernate:
       ddl-auto: update # Cria tabelas sozinho
       show-sql: true
+  management:
+    endpoint:
+      web:
+        exposure:
+          include: health, info, metrics, prometheus
+    endpoints:
+      health:
+        show-details: always
