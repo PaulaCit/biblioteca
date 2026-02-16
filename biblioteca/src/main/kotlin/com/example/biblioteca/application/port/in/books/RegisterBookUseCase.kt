@@ -1,4 +1,4 @@
-package com.example.biblioteca.application.port.`in`
+package com.example.biblioteca.application.port.`in`.books
 
 /*
 * Define o que o sistema sabe fazer. É o contrtato que a Controller vai usar

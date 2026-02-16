@@ -1,8 +1,8 @@
 package com.example.biblioteca.application.service
 
-import com.example.biblioteca.application.port.`in`.RegisterBookCommand
-import com.example.biblioteca.application.port.`in`.RegisterBookUseCase
-import com.example.biblioteca.application.port.out.BookRepositoryPort
+import com.example.biblioteca.application.port.`in`.books.RegisterBookCommand
+import com.example.biblioteca.application.port.`in`.books.RegisterBookUseCase
+import com.example.biblioteca.application.port.out.book.BookRepositoryPort
 import com.example.biblioteca.domain.books.entities.Book
 import com.example.biblioteca.domain.books.exceptions.IsbnAlreadyExistsException
 import com.example.biblioteca.domain.books.vo.Author

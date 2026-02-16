@@ -1,6 +1,6 @@
 package com.example.biblioteca.adapter.input.web.dto
 
-import com.example.biblioteca.application.port.`in`.RegisterBookCommand
+import com.example.biblioteca.application.port.`in`.books.RegisterBookCommand
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 

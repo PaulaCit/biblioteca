@@ -3,7 +3,7 @@ package com.example.biblioteca.adapter.output.persistence
 import com.example.biblioteca.adapter.output.persistence.entity.BookEntity
 import com.example.biblioteca.adapter.output.persistence.mapper.BookMapper
 import com.example.biblioteca.adapter.output.persistence.repository.SpringDataBookRepository
-import com.example.biblioteca.application.port.out.BookRepositoryPort
+import com.example.biblioteca.application.port.out.book.BookRepositoryPort
 import com.example.biblioteca.domain.books.entities.Book
 import com.example.biblioteca.domain.books.vo.Author
 import com.example.biblioteca.domain.books.vo.Isbn

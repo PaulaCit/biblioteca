@@ -1,4 +1,4 @@
-package com.example.biblioteca.application.port.out
+package com.example.biblioteca.application.port.out.book
 
 import com.example.biblioteca.domain.books.entities.Book
 import java.util.UUID

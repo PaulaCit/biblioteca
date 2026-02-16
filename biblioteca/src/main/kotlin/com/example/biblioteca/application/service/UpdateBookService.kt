@@ -1,8 +1,8 @@
 package com.example.biblioteca.application.service
 
-import com.example.biblioteca.application.port.`in`.UpdateBookCommand
-import com.example.biblioteca.application.port.`in`.UpdateBookUsecase
-import com.example.biblioteca.application.port.out.BookRepositoryPort
+import com.example.biblioteca.application.port.`in`.books.UpdateBookCommand
+import com.example.biblioteca.application.port.`in`.books.UpdateBookUsecase
+import com.example.biblioteca.application.port.out.book.BookRepositoryPort
 import com.example.biblioteca.domain.books.entities.Book
 import com.example.biblioteca.domain.books.exceptions.BookNotFoundException
 import jakarta.transaction.Transactional

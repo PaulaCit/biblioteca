@@ -1,7 +1,7 @@
 package com.example.biblioteca.application.service
 
-import com.example.biblioteca.application.port.`in`.DeleteBookUsecase
-import com.example.biblioteca.application.port.out.BookRepositoryPort
+import com.example.biblioteca.application.port.`in`.books.DeleteBookUsecase
+import com.example.biblioteca.application.port.out.book.BookRepositoryPort
 import com.example.biblioteca.domain.books.exceptions.BookNotFoundException
 import org.springframework.stereotype.Service
 import java.util.UUID
