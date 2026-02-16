@@ -1,6 +1,7 @@
 package com.example.biblioteca.application.port.out
 
 import com.example.biblioteca.domain.entities.Book
+import java.util.UUID
 
 /*
 * Interface de Saída (Repository Port)
@@ -12,4 +13,10 @@ interface BookRepositoryPort {
     fun existsByIsbn(isbn: String): Boolean
 
     fun getAll(): List<Book>
+
+    fun update(book: Book): Book
+
+    fun delete(id: UUID)
+
+    fun getById(id: UUID): Book?
 }
