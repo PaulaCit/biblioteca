@@ -23,7 +23,7 @@ class JwtTokenProviderAdapter(
 
     override fun generateToken(user: User): String {
         return Jwts.builder()
-            .setSubject(user.email)
+            .setSubject(user.email.value)
             .claim("id", user.id.toString())
             .claim("roles", user.roles)
             .setIssuedAt(Date(System.currentTimeMillis()))
