@@ -20,3 +20,8 @@ spring:
   loggin:
     pattern:
       console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - [%X{correlationId}] - %msg%n"
+  api:
+    security:
+      token:
+        secret: "YmFzZTY0LWVuY29kZWQtc2VjcmV0LWtleS1mb3Itand0LWhzNTEyLWFsZ29yaXRobS1tdXN0LWJlLWF0LWxlYXN0LTY0LWJ5dGVzLWxvbmc="
+        expiration: 86400000 # 24 horas em milissegundos
