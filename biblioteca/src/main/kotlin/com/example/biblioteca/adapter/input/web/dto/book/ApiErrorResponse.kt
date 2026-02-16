@@ -1,6 +1,5 @@
-package com.example.biblioteca.adapter.input.web.dto
+package com.example.biblioteca.adapter.input.web.dto.book
 
-import java.sql.Timestamp
 import java.time.LocalDateTime
 
 data class ApiErrorResponse(val timestamp: LocalDateTime = LocalDateTime.now(),

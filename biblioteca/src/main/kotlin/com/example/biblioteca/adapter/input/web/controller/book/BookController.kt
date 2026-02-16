@@ -1,8 +1,8 @@
-package com.example.biblioteca.adapter.input.web.controller
+package com.example.biblioteca.adapter.input.web.controller.book
 
-import com.example.biblioteca.adapter.input.web.dto.BookRequest
-import com.example.biblioteca.adapter.input.web.dto.BookResponse
-import com.example.biblioteca.adapter.input.web.dto.UpdateBookRequest
+import com.example.biblioteca.adapter.input.web.dto.book.BookRequest
+import com.example.biblioteca.adapter.input.web.dto.book.BookResponse
+import com.example.biblioteca.adapter.input.web.dto.book.UpdateBookRequest
 import com.example.biblioteca.application.port.`in`.books.DeleteBookUsecase
 import com.example.biblioteca.application.port.`in`.books.GetBookByIDUsecas
 import com.example.biblioteca.application.port.`in`.books.GetBooksUsecase

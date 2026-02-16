@@ -1,6 +1,6 @@
 package com.example.biblioteca
 
-import com.example.biblioteca.adapter.input.web.controller.BookController
+import com.example.biblioteca.adapter.input.web.controller.book.BookController
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertNull
 import org.springframework.beans.factory.annotation.Autowired

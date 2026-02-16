@@ -1,4 +1,4 @@
-package com.example.biblioteca.adapter.input.web.dto
+package com.example.biblioteca.adapter.input.web.dto.book
 
 data class UpdateBookRequest(
     val title: String? = null,
