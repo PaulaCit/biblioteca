@@ -9,6 +9,7 @@ import com.example.biblioteca.domain.vo.Author
 import com.example.biblioteca.domain.vo.Isbn
 import com.example.biblioteca.domain.vo.Title
 import org.springframework.stereotype.Component
+import java.util.UUID
 
 
 @Component // Transforma essa classe num Boolena do Spring
@@ -18,10 +19,10 @@ class BookPersistenceAdapter(private val springRepository: SpringDataBookReposit
         // 1. Converter Domínio -> Entidade JPA
        val entity = BookEntity(
            id = book.id,
-           author = book.author.value, // Extraindo o valor primitivo do VO
+           author = book.author.value,
            title = book.title.value,
            isbn = book.isbn.value,
-           isAvailable = book.checkAvailability(book)
+           isAvailable = book.checkAvailability()
        )
 
         // 2. Salvar no banco
@@ -46,5 +47,27 @@ class BookPersistenceAdapter(private val springRepository: SpringDataBookReposit
         return entities.map { entity ->
             BookMapper.toDomain(entity)
         }
+    }
+
+    override fun getById(id: UUID): Book? {
+        val entity = springRepository.findById(id).orElse(null)
+        return entity?.let { BookMapper.toDomain(it) }
+    }
+
+    override fun update(book: Book): Book {
+        val entity = BookEntity(
+            id = book.id,
+            author = book.author.value,
+            title = book.title.value,
+            isbn = book.isbn.value,
+            isAvailable = book.checkAvailability()
+        )
+
+        val updated = springRepository.save(entity)
+        return BookMapper.toDomain(updated)
+    }
+
+    override fun delete(id: UUID) {
+        springRepository.deleteById(id)
     }
 }

@@ -2,23 +2,38 @@ package com.example.biblioteca.adapter.input.web.controller
 
 import com.example.biblioteca.adapter.input.web.dto.BookRequest
 import com.example.biblioteca.adapter.input.web.dto.BookResponse
+import com.example.biblioteca.adapter.input.web.dto.UpdateBookRequest
+import com.example.biblioteca.application.port.`in`.DeleteBookUsecase
+import com.example.biblioteca.application.port.`in`.GetBookByIDUsecas
 import com.example.biblioteca.application.port.`in`.GetBooksUsecase
 import com.example.biblioteca.application.port.`in`.RegisterBookUseCase
+import com.example.biblioteca.application.port.`in`.UpdateBookCommand
+import com.example.biblioteca.application.port.`in`.UpdateBookUsecase
+import com.example.biblioteca.domain.exceptions.BookNotFoundException
 import jakarta.validation.Valid
+import org.apache.coyote.Response
+import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.util.UriComponentsBuilder
+import java.util.UUID
 
 @RestController
 @RequestMapping( "api/v1/books")
 class BookController(
     // Injeção da Porta de Entrada (Interface), não da implementação
     private val useCase: RegisterBookUseCase,
-    private val getBooksUsecase: GetBooksUsecase
+    private val getBooksUsecase: GetBooksUsecase,
+    private val getBookByIDUsecas: GetBookByIDUsecas,
+    private val updateBookUsecase: UpdateBookUsecase,
+    private val deleteBookUsecase: DeleteBookUsecase
 ) {
 
     @GetMapping
@@ -34,7 +49,7 @@ class BookController(
                 title = book.title.value,
                 author = book.author.value,
                 isbn = book.isbn.value,
-                isAvailable = book.checkAvailability(book)
+                isAvailable = book.checkAvailability()
             )
         }
 
@@ -60,6 +75,56 @@ class BookController(
         return ResponseEntity
             .created(uri)
             .body(idGerado)
+    }
+
+    @GetMapping("/{id}")
+    fun getBook(@PathVariable id: UUID): ResponseEntity<BookResponse> {
+        val book = getBookByIDUsecas.execute(id) ?: throw BookNotFoundException(id)
+
+        val response = BookResponse(
+            id = book.id.toString(),
+            title = book.title.value,
+            author = book.author.value,
+            isbn = book.isbn.value,
+            isAvailable = book.checkAvailability()
+        )
+        return ResponseEntity.ok(response)
+    }
+
+    @PutMapping("/{id}")
+    fun update(
+        @PathVariable id: UUID,
+        @RequestBody request: UpdateBookRequest
+    ): ResponseEntity<BookResponse> {
+
+        // 1. Mapeia o Request para o Command do domínio
+        val command = UpdateBookCommand(
+            id = id,
+            title = request.title,
+            isbn = request.isbn,
+            author = request.author
+        )
+
+        // 2. Executa a lógica
+        val updatedBook = updateBookUsecase.execute(command)
+
+        // 3. Mapeia para o Response (usando a lógica de segurança que discutimos)
+        val response = BookResponse(
+            id = updatedBook.id.toString(),
+            title = updatedBook.title.value,
+            author = updatedBook.author.value,
+            isbn = updatedBook.isbn.value,
+            isAvailable = updatedBook.checkAvailability()
+        )
+
+        return ResponseEntity.ok(response)
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: UUID): ResponseEntity<Void> {
+        val book = deleteBookUsecase.execute(id)
+
+        return ResponseEntity.noContent().build()
     }
 
 }

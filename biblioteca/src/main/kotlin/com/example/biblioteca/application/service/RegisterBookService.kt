@@ -25,11 +25,12 @@ class RegisterBookService(private val repository: BookRepositoryPort) : Register
         }
 
         // 2. Montagem da Entidade (Conversão String -> VO)
-        // Aqui fica explícito que estamos transformando dados "crus" em "ricos"
         val newBook = Book(
+            id = java.util.UUID.randomUUID(),
             title = Title(command.title),
             isbn = Isbn(command.isbn),
             author = Author(command.author),
+            isAvailable = true 
         )
 
         //3. Persistência

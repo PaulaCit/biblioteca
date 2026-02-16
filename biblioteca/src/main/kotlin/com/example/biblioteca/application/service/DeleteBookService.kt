@@ -3,9 +3,10 @@ package com.example.biblioteca.application.service
 import com.example.biblioteca.application.port.`in`.DeleteBookUsecase
 import com.example.biblioteca.application.port.out.BookRepositoryPort
 import com.example.biblioteca.domain.exceptions.BookNotFoundException
+import org.springframework.stereotype.Service
 import java.util.UUID
-import kotlin.math.log
 
+@Service
 class DeleteBookService(private val repositoryPort: BookRepositoryPort): DeleteBookUsecase {
     private val logger = org.slf4j.LoggerFactory.getLogger(javaClass)
 
