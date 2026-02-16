@@ -1,14 +1,15 @@
-package com.example.biblioteca.application.service
+package com.example.biblioteca.application.service.book
 
 import com.example.biblioteca.application.port.`in`.books.DeleteBookUsecase
 import com.example.biblioteca.application.port.out.book.BookRepositoryPort
 import com.example.biblioteca.domain.books.exceptions.BookNotFoundException
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.util.UUID
 
 @Service
 class DeleteBookService(private val repositoryPort: BookRepositoryPort): DeleteBookUsecase {
-    private val logger = org.slf4j.LoggerFactory.getLogger(javaClass)
+    private val logger = LoggerFactory.getLogger(javaClass)
 
     override fun execute(id: UUID) {
         logger.info("Iniciando processo de deletar livro ${id}")

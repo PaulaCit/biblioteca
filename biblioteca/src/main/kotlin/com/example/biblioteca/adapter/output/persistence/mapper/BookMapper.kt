@@ -1,6 +1,6 @@
 package com.example.biblioteca.adapter.output.persistence.mapper
 
-import com.example.biblioteca.adapter.output.persistence.entity.BookEntity
+import com.example.biblioteca.adapter.output.persistence.entity.book.BookEntity
 import com.example.biblioteca.domain.books.entities.Book
 import com.example.biblioteca.domain.books.vo.Author
 import com.example.biblioteca.domain.books.vo.Isbn

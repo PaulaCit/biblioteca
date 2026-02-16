@@ -1,4 +1,4 @@
-package com.example.biblioteca.adapter.output.persistence.security
+package com.example.biblioteca.application.port.out.user
 
 import com.example.biblioteca.domain.user.entity.User
 

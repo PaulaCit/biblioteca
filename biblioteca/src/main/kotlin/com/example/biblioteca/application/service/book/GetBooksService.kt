@@ -1,4 +1,4 @@
-package com.example.biblioteca.application.service
+package com.example.biblioteca.application.service.book
 
 import com.example.biblioteca.application.port.`in`.books.GetBooksUsecase
 import com.example.biblioteca.application.port.out.book.BookRepositoryPort

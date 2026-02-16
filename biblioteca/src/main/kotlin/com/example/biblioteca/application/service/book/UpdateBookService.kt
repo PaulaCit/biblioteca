@@ -1,4 +1,4 @@
-package com.example.biblioteca.application.service
+package com.example.biblioteca.application.service.book
 
 import com.example.biblioteca.application.port.`in`.books.UpdateBookCommand
 import com.example.biblioteca.application.port.`in`.books.UpdateBookUsecase
@@ -6,12 +6,13 @@ import com.example.biblioteca.application.port.out.book.BookRepositoryPort
 import com.example.biblioteca.domain.books.entities.Book
 import com.example.biblioteca.domain.books.exceptions.BookNotFoundException
 import jakarta.transaction.Transactional
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class UpdateBookService(private val repository: BookRepositoryPort ) : UpdateBookUsecase {
 
-    private val logger = org.slf4j.LoggerFactory.getLogger(javaClass)
+    private val logger = LoggerFactory.getLogger(javaClass)
 
     @Transactional
     override fun execute(

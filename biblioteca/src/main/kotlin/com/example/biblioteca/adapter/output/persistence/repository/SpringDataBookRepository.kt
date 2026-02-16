@@ -1,6 +1,6 @@
 package com.example.biblioteca.adapter.output.persistence.repository
 
-import com.example.biblioteca.adapter.output.persistence.entity.BookEntity
+import com.example.biblioteca.adapter.output.persistence.entity.book.BookEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.UUID
 

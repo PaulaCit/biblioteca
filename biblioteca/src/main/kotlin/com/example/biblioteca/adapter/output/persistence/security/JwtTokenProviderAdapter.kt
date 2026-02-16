@@ -1,5 +1,6 @@
 package com.example.biblioteca.adapter.output.persistence.security
 
+import com.example.biblioteca.application.port.out.user.TokenProviderPort
 import com.example.biblioteca.domain.user.entity.User
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
@@ -18,7 +19,7 @@ class JwtTokenProviderAdapter(
 
     @Value("\${api.security.token.expiration}") // Configurar tempo no yml
     private val tokenExpiration: Long = 86400000 // Padrão em 24h
-) : TokenProviderPort{
+) : TokenProviderPort {
 
 
     override fun generateToken(user: User): String {
