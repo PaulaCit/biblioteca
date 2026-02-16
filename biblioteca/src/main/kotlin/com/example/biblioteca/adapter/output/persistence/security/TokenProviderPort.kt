@@ -1,6 +1,6 @@
 package com.example.biblioteca.adapter.output.persistence.security
 
-import com.example.biblioteca.domain.entities.User
+import com.example.biblioteca.domain.user.entity.User
 
 interface TokenProviderPort {
 

@@ -1,6 +1,6 @@
 package com.example.biblioteca.application.port.`in`
 
-import com.example.biblioteca.domain.entities.Book
+import com.example.biblioteca.domain.books.entities.Book
 
 interface
 GetBooksUsecase {

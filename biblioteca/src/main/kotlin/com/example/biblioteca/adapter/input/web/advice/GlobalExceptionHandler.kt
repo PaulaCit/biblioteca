@@ -1,6 +1,6 @@
 package com.example.biblioteca.adapter.input.web.advice
 
-import com.example.biblioteca.domain.exceptions.DomainException
+import com.example.biblioteca.domain.common.exceptions.DomainException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException

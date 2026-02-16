@@ -1,10 +1,10 @@
 package com.example.biblioteca.adapter.output.persistence.mapper
 
 import com.example.biblioteca.adapter.output.persistence.entity.BookEntity
-import com.example.biblioteca.domain.entities.Book
-import com.example.biblioteca.domain.vo.Author
-import com.example.biblioteca.domain.vo.Isbn
-import com.example.biblioteca.domain.vo.Title
+import com.example.biblioteca.domain.books.entities.Book
+import com.example.biblioteca.domain.books.vo.Author
+import com.example.biblioteca.domain.books.vo.Isbn
+import com.example.biblioteca.domain.books.vo.Title
 
 object BookMapper {
 

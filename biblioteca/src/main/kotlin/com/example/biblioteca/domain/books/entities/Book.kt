@@ -1,9 +1,9 @@
-package com.example.biblioteca.domain.entities
+package com.example.biblioteca.domain.books.entities
 
-import com.example.biblioteca.domain.exceptions.BorrowedBookException
-import com.example.biblioteca.domain.vo.Author
-import com.example.biblioteca.domain.vo.Isbn
-import com.example.biblioteca.domain.vo.Title
+import com.example.biblioteca.domain.books.exceptions.BorrowedBookException
+import com.example.biblioteca.domain.books.vo.Author
+import com.example.biblioteca.domain.books.vo.Isbn
+import com.example.biblioteca.domain.books.vo.Title
 import java.util.UUID
 
 class Book(

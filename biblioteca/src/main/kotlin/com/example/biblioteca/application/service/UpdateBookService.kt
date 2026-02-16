@@ -3,14 +3,10 @@ package com.example.biblioteca.application.service
 import com.example.biblioteca.application.port.`in`.UpdateBookCommand
 import com.example.biblioteca.application.port.`in`.UpdateBookUsecase
 import com.example.biblioteca.application.port.out.BookRepositoryPort
-import com.example.biblioteca.domain.entities.Book
-import com.example.biblioteca.domain.exceptions.BookNotFoundException
-import com.example.biblioteca.domain.vo.Author
-import com.example.biblioteca.domain.vo.Isbn
-import com.example.biblioteca.domain.vo.Title
+import com.example.biblioteca.domain.books.entities.Book
+import com.example.biblioteca.domain.books.exceptions.BookNotFoundException
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
-import kotlin.math.log
 
 @Service
 class UpdateBookService(private val repository: BookRepositoryPort ) : UpdateBookUsecase {

@@ -3,13 +3,13 @@ package com.example.biblioteca.application.service
 import com.example.biblioteca.application.port.`in`.RegisterBookCommand
 import com.example.biblioteca.application.port.`in`.RegisterBookUseCase
 import com.example.biblioteca.application.port.out.BookRepositoryPort
-import com.example.biblioteca.domain.entities.Book
-import com.example.biblioteca.domain.exceptions.IsbnAlreadyExistsException
-import com.example.biblioteca.domain.vo.Author
-import com.example.biblioteca.domain.vo.Isbn
-import com.example.biblioteca.domain.vo.Title
+import com.example.biblioteca.domain.books.entities.Book
+import com.example.biblioteca.domain.books.exceptions.IsbnAlreadyExistsException
+import com.example.biblioteca.domain.books.vo.Author
+import com.example.biblioteca.domain.books.vo.Isbn
+import com.example.biblioteca.domain.books.vo.Title
 import org.springframework.stereotype.Service
-import kotlin.math.log
+import java.util.UUID
 
 @Service // Indica ao Spring que esta classe contém a lógica de negócio (Application Service)
 class RegisterBookService(private val repository: BookRepositoryPort) : RegisterBookUseCase {
@@ -26,11 +26,11 @@ class RegisterBookService(private val repository: BookRepositoryPort) : Register
 
         // 2. Montagem da Entidade (Conversão String -> VO)
         val newBook = Book(
-            id = java.util.UUID.randomUUID(),
+            id = UUID.randomUUID(),
             title = Title(command.title),
             isbn = Isbn(command.isbn),
             author = Author(command.author),
-            isAvailable = true 
+            isAvailable = true
         )
 
         //3. Persistência

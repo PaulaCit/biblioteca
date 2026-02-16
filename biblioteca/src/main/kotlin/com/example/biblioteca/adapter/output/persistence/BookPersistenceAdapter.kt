@@ -4,10 +4,10 @@ import com.example.biblioteca.adapter.output.persistence.entity.BookEntity
 import com.example.biblioteca.adapter.output.persistence.mapper.BookMapper
 import com.example.biblioteca.adapter.output.persistence.repository.SpringDataBookRepository
 import com.example.biblioteca.application.port.out.BookRepositoryPort
-import com.example.biblioteca.domain.entities.Book
-import com.example.biblioteca.domain.vo.Author
-import com.example.biblioteca.domain.vo.Isbn
-import com.example.biblioteca.domain.vo.Title
+import com.example.biblioteca.domain.books.entities.Book
+import com.example.biblioteca.domain.books.vo.Author
+import com.example.biblioteca.domain.books.vo.Isbn
+import com.example.biblioteca.domain.books.vo.Title
 import org.springframework.stereotype.Component
 import java.util.UUID
 

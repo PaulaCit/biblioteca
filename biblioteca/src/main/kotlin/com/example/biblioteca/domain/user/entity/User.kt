@@ -1,4 +1,4 @@
-package com.example.biblioteca.domain.entities
+package com.example.biblioteca.domain.user.entity
 
 import java.util.UUID
 

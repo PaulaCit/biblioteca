@@ -9,10 +9,8 @@ import com.example.biblioteca.application.port.`in`.GetBooksUsecase
 import com.example.biblioteca.application.port.`in`.RegisterBookUseCase
 import com.example.biblioteca.application.port.`in`.UpdateBookCommand
 import com.example.biblioteca.application.port.`in`.UpdateBookUsecase
-import com.example.biblioteca.domain.exceptions.BookNotFoundException
+import com.example.biblioteca.domain.books.exceptions.BookNotFoundException
 import jakarta.validation.Valid
-import org.apache.coyote.Response
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

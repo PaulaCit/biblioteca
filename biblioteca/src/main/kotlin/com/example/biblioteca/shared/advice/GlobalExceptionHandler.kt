@@ -1,7 +1,7 @@
 package com.example.biblioteca.shared.advice
 
 import com.example.biblioteca.adapter.input.web.dto.ApiErrorResponse
-import com.example.biblioteca.domain.exceptions.DomainException
+import com.example.biblioteca.domain.common.exceptions.DomainException
 import jakarta.servlet.http.HttpServletRequest
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC

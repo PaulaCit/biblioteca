@@ -1,6 +1,6 @@
-package com.example.biblioteca.domain.vo
+package com.example.biblioteca.domain.books.vo
 
-import com.example.biblioteca.domain.exceptions.IsbnInvalidException
+import com.example.biblioteca.domain.books.exceptions.IsbnInvalidException
 
 @JvmInline
 value class Isbn(val value: String){

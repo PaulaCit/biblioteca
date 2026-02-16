@@ -1,7 +1,7 @@
-package com.example.biblioteca.domain.vo
+package com.example.biblioteca.domain.books.vo
 
-import com.example.biblioteca.domain.exceptions.ShortTitleException
-import com.example.biblioteca.domain.exceptions.TitleRequiredException
+import com.example.biblioteca.domain.books.exceptions.ShortTitleException
+import com.example.biblioteca.domain.books.exceptions.TitleRequiredException
 
 @JvmInline
 value class Title(val value: String){
