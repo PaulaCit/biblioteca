@@ -2,26 +2,32 @@ spring:
   application:
     name: biblioteca
   datasource:
-    url: jbc:postgresql://localhost:5432/biblioteca_db
+    url: jdbc:postgresql://localhost:5432/biblioteca_db # Corrigido para jdbc
     username: admin
     password: senha_secreta
   jpa:
     hibernate:
-      ddl-auto: update # Cria tabelas sozinho
-      show-sql: true
-  management:
-    endpoint:
-      web:
-        exposure:
-          include: health, info, metrics, prometheus
-    endpoints:
-      health:
-        show-details: always
-  loggin:
-    pattern:
-      console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - [%X{correlationId}] - %msg%n"
-  api:
-    security:
-      token:
-        secret: "YmFzZTY0LWVuY29kZWQtc2VjcmV0LWtleS1mb3Itand0LWhzNTEyLWFsZ29yaXRobS1tdXN0LWJlLWF0LWxlYXN0LTY0LWJ5dGVzLWxvbmc="
-        expiration: 86400000 # 24 horas em milissegundos
+      ddl-auto: update
+    show-sql: true
+
+# Tiramos de dentro do "spring:" e alinhamos à esquerda
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
+
+# Corrigido "loggin" para "logging" e alinhado à esquerda
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - [%X{correlationId}] - %msg%n"
+
+# Tiramos de dentro do "spring:" para o @Value funcionar perfeitamente!
+api:
+  security:
+    token:
+      secret: "YmFzZTY0LWVuY29kZWQtc2VjcmV0LWtleS1mb3Itand0LWhzNTEyLWFsZ29yaXRobS1tdXN0LWJlLWF0LWxlYXN0LTY0LWJ5dGVzLWxvbmc="
+      expiration: 86400000

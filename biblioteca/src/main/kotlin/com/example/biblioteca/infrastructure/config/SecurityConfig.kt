@@ -2,16 +2,39 @@ package com.example.biblioteca.infrastructure.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+
 
 @Configuration
-class SecurityConfig {
+@EnableWebSecurity
+class SecurityConfig(
+    private val securityFilter: SecurityFilter
+) {
 
     @Bean
     fun passwordEncoder(): PasswordEncoder {
-        // O BCrypt é o algoritmo mais recomendado para senhas hoje em dia.
-        // Ele gera um 'salt' automático, garantindo que senhas iguais gerem hashes diferentes.
         return BCryptPasswordEncoder()
+    }
+
+    @Bean
+    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+        http
+            .csrf { it.disable() }
+            .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+            .authorizeHttpRequests { auth ->
+                auth.requestMatchers("/api/v1/auth/register", "/api/v1/auth/login").permitAll()
+                auth.requestMatchers("/actuator/**").permitAll()
+                auth.anyRequest().authenticated()
+            }
+            // 2. ADICIONAMOS A CHAMADA DO FILTRO AQUI!
+            .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter::class.java)
+
+        return http.build()
     }
 }

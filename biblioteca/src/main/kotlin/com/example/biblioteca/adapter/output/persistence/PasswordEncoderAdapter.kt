@@ -11,8 +11,8 @@ class PasswordEncoderAdapter(
 ) : PasswordEncoderPort {
 
     override fun encode(rawPassword: String): String {
-        // Pega a senha em texto plano (ex: "123456") e transforma no hash
-        return springPasswordEncoder.encode(rawPassword)
+        // O !! força o Kotlin a aceitar que o retorno não é nulo
+        return springPasswordEncoder.encode(rawPassword)!!
     }
 
     override fun matches(rawPassword: String, encodedPassword: String): Boolean {
