@@ -8,6 +8,17 @@ import com.example.biblioteca.domain.books.vo.Title
 
 object BookMapper {
 
+
+    fun toEntity(book: Book): BookEntity {
+        return BookEntity(
+            id = book.id,
+            title = book.title.value,
+            author = book.author.value,
+            isbn = book.isbn.value,
+            isAvailable = book.isAvailable
+        )
+    }
+
     fun toDomain(entity: BookEntity): Book {
         return Book(
             id = entity.id,

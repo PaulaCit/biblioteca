@@ -17,25 +17,13 @@ class BookPersistenceAdapter(private val springRepository: SpringDataBookReposit
     override fun save(book: Book): Book {
 
         // 1. Converter Domínio -> Entidade JPA
-       val entity = BookEntity(
-           id = book.id,
-           author = book.author.value,
-           title = book.title.value,
-           isbn = book.isbn.value,
-           isAvailable = book.checkAvailability()
-       )
+        val entity = BookMapper.toEntity(book)
 
         // 2. Salvar no banco
         val saved = springRepository.save(entity)
 
-
         // 3. Converter Entidade JPA -> Dominio (O retorno tem que ser Domínio!)
-        return Book(saved.id,
-            title = Title(saved.title),
-            author = Author(saved.author),
-            isbn = Isbn(saved.isbn),
-            isAvailable = saved.isAvailable,
-            )
+        return BookMapper.toDomain(saved)
     }
 
     override fun existsByIsbn(isbn: String): Boolean {
@@ -55,13 +43,7 @@ class BookPersistenceAdapter(private val springRepository: SpringDataBookReposit
     }
 
     override fun update(book: Book): Book {
-        val entity = BookEntity(
-            id = book.id,
-            author = book.author.value,
-            title = book.title.value,
-            isbn = book.isbn.value,
-            isAvailable = book.checkAvailability()
-        )
+        val entity = BookMapper.toEntity(book)
 
         val updated = springRepository.save(entity)
         return BookMapper.toDomain(updated)

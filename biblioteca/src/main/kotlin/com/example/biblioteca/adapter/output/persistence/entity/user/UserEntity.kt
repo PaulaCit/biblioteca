@@ -1,9 +1,11 @@
 package com.example.biblioteca.adapter.output.persistence.entity.user
 
 import jakarta.persistence.*
+import org.hibernate.envers.Audited
 import java.util.UUID
 
 @Entity
+@Audited
 @Table(name = "users")
 data class UserEntity(
     @Id

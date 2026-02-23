@@ -3,9 +3,11 @@ package com.example.biblioteca.adapter.output.persistence.entity.book
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import org.hibernate.envers.Audited
 import java.util.UUID
 
 @Entity
+@Audited
 @Table(name = "tb_book")
 class BookEntity (
     @Id
@@ -17,7 +19,5 @@ class BookEntity (
 
     // O JPA exige um construtor vazio (pode ser protected)
     protected constructor(): this(UUID.randomUUID(), "", "", "", false)
-
-
 
 }
